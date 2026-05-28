@@ -1,3 +1,5 @@
+import { paints } from "@/data/paints";
+import { PaintCard } from "@/components/PaintCard";
 
 export default function Home() {
   return (
@@ -24,6 +26,11 @@ export default function Home() {
             <button className="rounded-full border border-zinc-700 px-6 py-3 font-semibold text-zinc-100">
               View paint database
             </button>
+          </div>
+          <div className="mt-16 grid w-full gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {paints.map((paint) => (
+              <PaintCard key={paint.id} paint={paint} />
+            ))}
           </div>
         </section>
       </main>
