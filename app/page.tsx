@@ -1,5 +1,5 @@
 import { paints } from "@/data/paints";
-import { PaintCard } from "@/components/PaintCard";
+import { PaintGrid } from "@/components/PaintGrid";
 
 export default function Home() {
   return (
@@ -27,11 +27,7 @@ export default function Home() {
               View paint database
             </button>
           </div>
-          <div className="mt-16 grid w-full gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {paints.map((paint) => (
-              <PaintCard key={paint.id} paint={paint} />
-            ))}
-          </div>
+          <PaintGrid paints={paints} />
         </section>
       </main>
   );
