@@ -17,6 +17,7 @@ export type Paint = {
     name: string;
     hex: string;
     type: PaintType;
+    alternativeIds?: string[];
 };
 
 export const paints: Paint[] = [
@@ -27,6 +28,7 @@ export const paints: Paint[] = [
         name: "Abaddon Black",
         hex: "#0F0F10",
         type: "base",
+        alternativeIds: ["vallejo-black"],
     },
     {
         id: "citadel-mephiston-red",

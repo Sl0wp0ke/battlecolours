@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Paint } from "@/data/paints";
 
 type PaintCardProps = {
@@ -6,7 +7,9 @@ type PaintCardProps = {
 
 export function PaintCard({ paint }: PaintCardProps) {
     return (
-        <div className="rounded-2xl border border-zinc-800 bg-zinc-900 p-4 text-left transition hover:-translate-y-1 hover:border-amber-400 hover:shadow-lg">
+        <Link
+            href={`/paints/${paint.id}`}
+            className="rounded-2xl border border-zinc-800 bg-zinc-900 p-4 text-left transition hover:-translate-y-1 hover:border-amber-400 hover:shadow-lg">
             <div
                 className="mb-4 h-20 rounded-xl border border-zinc-700"
                 style={{ backgroundColor: paint.hex }}
@@ -17,6 +20,6 @@ export function PaintCard({ paint }: PaintCardProps) {
             <p className="mt-2 text-xs uppercase tracking-wider text-zinc-500">
                 {paint.type}
             </p>
-        </div>
+        </Link>
     );
 }
