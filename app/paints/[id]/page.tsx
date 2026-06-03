@@ -1,5 +1,7 @@
 import {paints} from "@/data/paints";
 import {notFound} from "next/navigation";
+import { findClosestPaints } from "@/lib/color";
+import Link from "next/link";
 
 type PaintPageProps = {
     params: Promise<{
@@ -12,9 +14,7 @@ export default async function PaintPage({params}: PaintPageProps) {
 
     const paint = paints.find((paint) => paint.id === id);
 
-    const alternatives = paints.filter((candidate) =>
-        paint.alternativeIds?.includes(candidate.id)
-    );
+    const alternatives = findClosestPaints(paint, paints, 3);
 
     if (!paint) {
         notFound();
@@ -23,9 +23,9 @@ export default async function PaintPage({params}: PaintPageProps) {
     return (
         <main className="min-h-screen bg-zinc-950 p-8 text-zinc-100">
             <section className="mx-auto max-w-4xl">
-                <a href="/" className="text-sm text-amber-400 hover:underline">
+                <Link href="/" className="text-sm text-amber-400 hover:underline">
                     ← Back to paints
-                </a>
+                </Link>
 
                 <div className="mt-8 rounded-3xl border border-zinc-800 bg-zinc-900 p-8">
                     <div
